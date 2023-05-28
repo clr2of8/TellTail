@@ -44,18 +44,29 @@ namespace TellTail
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
             tabPage1.Size = logTabControl.Size;
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "* " + LogName;
+            tabPage1.Text = "-->" + LogName;
             tabPage1.UseVisualStyleBackColor = true;
+            if (LogName == "Microsoft-Windows-PowerShell/Operational")
+            {
+                tabPage1.BackColor = Color.Blue;
+            }
+            else if (LogName == "PowerShellCore/Operational")
+            {
+                tabPage1.BackColor = Color.Black;
+            }
+            else {
+                tabPage1.BackColor = Color.White;
+            }
             tabPages.Add(tabPage1);
 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = tabPage1.Location;
+            dataGridView1.Location = new System.Drawing.Point(tabPage1.Location.X+2, tabPage1.Location.Y);
             dataGridView1.Name = "dataGridView";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = tabPage1.Size;
+            dataGridView1.Size = new System.Drawing.Size(tabPage1.Size.Width -16, tabPage1.Size.Height - 42);
             dataGridView1.TabIndex = 0;
             dataGridView1.Tag = LogName;
 
@@ -70,9 +81,11 @@ namespace TellTail
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[1].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellMouseClick);
-
 
             dataGridViews.Add(dataGridView1);
 
