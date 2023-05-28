@@ -6,10 +6,14 @@ using System.Diagnostics;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Reflection.Emit;
 using System.Runtime.CompilerServices;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Linq;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace TellTail
 {
@@ -35,10 +39,10 @@ namespace TellTail
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
 
             tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location = new System.Drawing.Point(4, 34);
+            tabPage1.Location =logTabControl.Location;
             tabPage1.Name = "tabPage4";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = new System.Drawing.Size(1718, 791);
+            tabPage1.Size = logTabControl.Size;
             tabPage1.TabIndex = 0;
             tabPage1.Text = "* " + LogName;
             tabPage1.UseVisualStyleBackColor = true;
@@ -46,12 +50,12 @@ namespace TellTail
 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(3, 3);
+            dataGridView1.Location = tabPage1.Location;
             dataGridView1.Name = "dataGridView";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = new System.Drawing.Size(1709, 791);
+            dataGridView1.Size = tabPage1.Size;
             dataGridView1.TabIndex = 0;
             dataGridView1.Tag = LogName;
 
@@ -66,6 +70,9 @@ namespace TellTail
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellMouseClick);
+
 
             dataGridViews.Add(dataGridView1);
 
@@ -77,6 +84,10 @@ namespace TellTail
             LoadEventLogs(LogName);
         }
 
+        private void dataGridView1_CellMouseClick(object sender, DataGridViewCellEventArgs e)
+        {
+            detailedMessage.Text = ((System.Windows.Forms.DataGridView)sender).Rows[e.RowIndex].Cells[3].Value.ToString();
+        }
         public void LoadEventLogs(String log)
         {
             EventLogSession session = new EventLogSession();
