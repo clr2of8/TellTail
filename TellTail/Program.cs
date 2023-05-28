@@ -22,8 +22,7 @@ namespace TellTail
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            TellTailForm TTform = new TellTailForm();
-            Application.Run(TTform);
+            Application.Run(new TellTailForm());
 
         }
     }
