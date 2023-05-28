@@ -30,6 +30,7 @@ namespace TellTail
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TellTailForm));
             this.LogTabsPanel = new System.Windows.Forms.Panel();
             this.logTabControl = new System.Windows.Forms.TabControl();
             this.LogTabsPanel.SuspendLayout();
@@ -38,9 +39,9 @@ namespace TellTail
             // LogTabsPanel
             // 
             this.LogTabsPanel.Controls.Add(this.logTabControl);
-            this.LogTabsPanel.Location = new System.Drawing.Point(81, 73);
+            this.LogTabsPanel.Location = new System.Drawing.Point(3, 5);
             this.LogTabsPanel.Name = "LogTabsPanel";
-            this.LogTabsPanel.Size = new System.Drawing.Size(2080, 1050);
+            this.LogTabsPanel.Size = new System.Drawing.Size(2185, 1159);
             this.LogTabsPanel.TabIndex = 0;
             // 
             // logTabControl
@@ -58,6 +59,7 @@ namespace TellTail
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2189, 1165);
             this.Controls.Add(this.LogTabsPanel);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TellTailForm";
             this.Text = "TellTail";
             this.LogTabsPanel.ResumeLayout(false);
