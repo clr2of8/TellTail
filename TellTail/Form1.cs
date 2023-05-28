@@ -21,71 +21,60 @@ namespace TellTail
         public TellTailForm()
         {
             InitializeComponent();
-            // Set up the DataGridView columns
-            this.dataGridView.Columns.Add("EventTime", "Event Time");
-            this.dataGridView.Columns.Add("EventID", "Event ID");
-            this.dataGridView.Columns.Add("EventLevel", "Level");
-            this.dataGridView.Columns.Add("EventDescription", "Description");
-
-            this.dataGridView.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridView.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridView.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            this.dataGridView.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            this.dataGridView.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-
-
 
             AddTab("Microsoft-Windows-PowerShell/Operational");
+            AddTab("Windows PowerShell");
+            AddTab("PowerShellCore/Operational");
 
         }
 
         private void AddTab(String LogName)
         {
-            TabPage tabPagePSOperational = new System.Windows.Forms.TabPage();
-            DataGridView dataGridViewPSOperational = new System.Windows.Forms.DataGridView();
-            ((System.ComponentModel.ISupportInitialize)(dataGridViewPSOperational)).BeginInit();
+            TabPage tabPage1 = new System.Windows.Forms.TabPage();
+            DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
 
-            tabPagePSOperational.Controls.Add(dataGridViewPSOperational);
-            tabPagePSOperational.Location = new System.Drawing.Point(4, 34);
-            tabPagePSOperational.Name = "tabPage4";
-            tabPagePSOperational.Padding = new System.Windows.Forms.Padding(3);
-            tabPagePSOperational.Size = new System.Drawing.Size(1718, 791);
-            tabPagePSOperational.TabIndex = 0;
-            tabPagePSOperational.Text = LogName;
-            tabPagePSOperational.UseVisualStyleBackColor = true;
-            tabPages.Add(tabPagePSOperational);
+            tabPage1.Controls.Add(dataGridView1);
+            tabPage1.Location = new System.Drawing.Point(4, 34);
+            tabPage1.Name = "tabPage4";
+            tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            tabPage1.Size = new System.Drawing.Size(1718, 791);
+            tabPage1.TabIndex = 0;
+            tabPage1.Text = "* " + LogName;
+            tabPage1.UseVisualStyleBackColor = true;
+            tabPages.Add(tabPage1);
 
-            dataGridViewPSOperational.AllowUserToOrderColumns = true;
-            dataGridViewPSOperational.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPSOperational.Location = new System.Drawing.Point(3, 3);
-            dataGridViewPSOperational.Name = "dataGridView";
-            dataGridViewPSOperational.ReadOnly = true;
-            dataGridViewPSOperational.RowHeadersWidth = 51;
-            dataGridViewPSOperational.RowTemplate.Height = 24;
-            dataGridViewPSOperational.Size = new System.Drawing.Size(1709, 791);
-            dataGridViewPSOperational.TabIndex = 0;
-            dataGridViewPSOperational.Tag = LogName;
+            dataGridView1.AllowUserToOrderColumns = true;
+            dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new System.Drawing.Point(3, 3);
+            dataGridView1.Name = "dataGridView";
+            dataGridView1.ReadOnly = true;
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.RowTemplate.Height = 24;
+            dataGridView1.Size = new System.Drawing.Size(1709, 791);
+            dataGridView1.TabIndex = 0;
+            dataGridView1.Tag = LogName;
 
             // Set up the DataGridView columns
-            dataGridViewPSOperational.Columns.Add("EventTime", "Event Time");
-            dataGridViewPSOperational.Columns.Add("EventID", "Event ID");
-            dataGridViewPSOperational.Columns.Add("EventLevel", "Level");
-            dataGridViewPSOperational.Columns.Add("EventDescription", "Description");
+            dataGridView1.Columns.Add("EventTime", "Event Time");
+            dataGridView1.Columns.Add("EventID", "Event ID");
+            dataGridView1.Columns.Add("EventLevel", "Level");
+            dataGridView1.Columns.Add("EventDescription", "Description");
 
-            dataGridViewPSOperational.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewPSOperational.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewPSOperational.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewPSOperational.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            dataGridViewPSOperational.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[0].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
 
-            dataGridViews.Add(dataGridViewPSOperational);
+            dataGridViews.Add(dataGridView1);
 
 
-            tabPagePSOperational.Controls.Add(dataGridViewPSOperational);
-            this.logTabControl.Controls.Add(tabPagePSOperational);
+            tabPage1.Controls.Add(dataGridView1);
+            this.logTabControl.Controls.Add(tabPage1);
 
             // Load the Event Log entries
-            LoadEventLogs("Microsoft-Windows-PowerShell/Operational");
+            LoadEventLogs(LogName);
         }
 
         public void LoadEventLogs(String log)
