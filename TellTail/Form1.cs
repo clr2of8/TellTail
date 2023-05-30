@@ -85,6 +85,7 @@ namespace TellTail
             dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dataGridView1.Sort(dataGridView1.Columns[0],ListSortDirection.Descending);
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellMouseClick);
 
             dataGridViews.Add(dataGridView1);
@@ -136,7 +137,11 @@ namespace TellTail
             {
                 if (dataGridView.Tag.ToString() == e.EventRecord.LogName)
                 {
-                    dataGridView.Invoke(new Action(() => dataGridView.Rows.Add(time, id, level, desc)));
+                    //DataGridViewRow row = new DataGridViewRow(time, id, level, desc)
+                    int index = dataGridView.RowCount - 1;
+                    if(dataGridView.SortOrder == SortOrder.Descending) { index = 0; }
+
+                    dataGridView.Invoke(new Action(() => dataGridView.Rows.Insert(index, new Object[] { time,id,level,desc})));
                 }
             }
  
