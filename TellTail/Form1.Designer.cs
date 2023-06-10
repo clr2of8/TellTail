@@ -32,8 +32,8 @@ namespace TellTail
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TellTailForm));
             this.LogTabsPanel = new System.Windows.Forms.Panel();
-            this.logTabControl = new System.Windows.Forms.TabControl();
             this.detailedMessage = new System.Windows.Forms.RichTextBox();
+            this.logTabControl = new System.Windows.Forms.TabControl();
             this.LogTabsPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,6 +46,17 @@ namespace TellTail
             this.LogTabsPanel.Size = new System.Drawing.Size(2185, 1159);
             this.LogTabsPanel.TabIndex = 0;
             // 
+            // detailedMessage
+            // 
+            this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detailedMessage.Location = new System.Drawing.Point(1314, 7);
+            this.detailedMessage.Name = "detailedMessage";
+            this.detailedMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
+            this.detailedMessage.Size = new System.Drawing.Size(868, 1150);
+            this.detailedMessage.TabIndex = 1;
+            this.detailedMessage.Text = "";
+            this.detailedMessage.WordWrap = false;
+            // 
             // logTabControl
             // 
             this.logTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -54,16 +65,6 @@ namespace TellTail
             this.logTabControl.SelectedIndex = 0;
             this.logTabControl.Size = new System.Drawing.Size(1305, 1151);
             this.logTabControl.TabIndex = 0;
-            // 
-            // detailedMessage
-            // 
-            this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailedMessage.Location = new System.Drawing.Point(1314, 7);
-            this.detailedMessage.Name = "detailedMessage";
-            this.detailedMessage.Size = new System.Drawing.Size(868, 1150);
-            this.detailedMessage.TabIndex = 1;
-            this.detailedMessage.Text = "";
-            this.detailedMessage.WordWrap = false;
             // 
             // TellTailForm
             // 
