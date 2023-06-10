@@ -48,13 +48,10 @@ namespace TellTail
             dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
 
-            tabPage1.Controls.Add(dataGridView1);
-           // tabPage1.Location =logTabControl.Location;
-            tabPage1.Name = "tabPage4";
+
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            //tabPage1.Size = logTabControl.Size;
             tabPage1.TabIndex = 0;
-            tabPage1.Text = "-->" + LogName;
+            tabPage1.Text = LogName;
             tabPage1.UseVisualStyleBackColor = true;
             if (LogName == "Microsoft-Windows-PowerShell/Operational")
             {
@@ -67,6 +64,7 @@ namespace TellTail
             else {
                 tabPage1.BackColor = Color.White;
             }
+            tabPage1.Controls.Add(dataGridView1);
 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -75,7 +73,8 @@ namespace TellTail
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Size = new System.Drawing.Size(tabPage1.Size.Width -16, tabPage1.Size.Height - 42);
+            dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             dataGridView1.TabIndex = 0;
             dataGridView1.Tag = LogName;
 
@@ -202,6 +201,20 @@ namespace TellTail
  
         }
 
+        private void logTabControl_DrawItem(object sender, DrawItemEventArgs e)
+        {
+            TabPage page = logTabControl.TabPages[e.Index];
+            Brush col = Brushes.Gray;
+            if (page.Text == "Microsoft-Windows-PowerShell/Operational")
+            {
+                col = Brushes.Blue;
+            }
+            else if (page.Text == "PowerShellCore/Operational")
+            {
+                col = Brushes.Black;
+            }
 
+            e.Graphics.DrawString(page.Text, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
+        }
     }
 }

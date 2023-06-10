@@ -33,70 +33,84 @@ namespace TellTail
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(TellTailForm));
-            this.LogTabsPanel = new System.Windows.Forms.Panel();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.detailedMessage = new System.Windows.Forms.RichTextBox();
             this.logTabControl = new System.Windows.Forms.TabControl();
-            this.LogTabsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+            this.splitContainer1.Panel1.SuspendLayout();
+            this.splitContainer1.Panel2.SuspendLayout();
+            this.splitContainer1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // LogTabsPanel
+            // splitContainer1
             // 
-            this.LogTabsPanel.AutoSize = true;
-            this.LogTabsPanel.Controls.Add(this.detailedMessage);
-            this.LogTabsPanel.Controls.Add(this.logTabControl);
-            this.LogTabsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LogTabsPanel.Location = new System.Drawing.Point(0, 0);
-            this.LogTabsPanel.MinimumSize = new System.Drawing.Size(1902, 1031);
-            this.LogTabsPanel.Name = "LogTabsPanel";
-            this.LogTabsPanel.Size = new System.Drawing.Size(1902, 1033);
-            this.LogTabsPanel.TabIndex = 0;
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.splitContainer1.Name = "splitContainer1";
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.logTabControl);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.detailedMessage);
+            this.splitContainer1.Size = new System.Drawing.Size(1902, 1033);
+            this.splitContainer1.SplitterDistance = 1354;
+            this.splitContainer1.SplitterWidth = 7;
+            this.splitContainer1.TabIndex = 0;
             // 
             // detailedMessage
             // 
-            this.detailedMessage.Dock = System.Windows.Forms.DockStyle.Right;
-            this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailedMessage.Location = new System.Drawing.Point(1317, 0);
+            this.detailedMessage.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.detailedMessage.Location = new System.Drawing.Point(0, 0);
+            this.detailedMessage.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.detailedMessage.Name = "detailedMessage";
-            this.detailedMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.detailedMessage.Size = new System.Drawing.Size(585, 1033);
-            this.detailedMessage.TabIndex = 1;
+            this.detailedMessage.Size = new System.Drawing.Size(541, 1033);
+            this.detailedMessage.TabIndex = 0;
             this.detailedMessage.Text = "";
             this.detailedMessage.WordWrap = false;
             // 
             // logTabControl
             // 
-            this.logTabControl.Dock = System.Windows.Forms.DockStyle.Left;
-            this.logTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.logTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.logTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
+            this.logTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logTabControl.Location = new System.Drawing.Point(0, 0);
-            this.logTabControl.MinimumSize = new System.Drawing.Size(1305, 1022);
+            this.logTabControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.logTabControl.Name = "logTabControl";
             this.logTabControl.SelectedIndex = 0;
-            this.logTabControl.Size = new System.Drawing.Size(1305, 1033);
-            this.logTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
+            this.logTabControl.Size = new System.Drawing.Size(1354, 1033);
             this.logTabControl.TabIndex = 0;
+            this.logTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.logTabControl_DrawItem);
             // 
             // TellTailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1902, 1033);
-            this.Controls.Add(this.LogTabsPanel);
+            this.Controls.Add(this.splitContainer1);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1920, 1080);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "TellTailForm";
             this.Text = "TellTail";
-            this.LogTabsPanel.ResumeLayout(false);
+            this.splitContainer1.Panel1.ResumeLayout(false);
+            this.splitContainer1.Panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+            this.splitContainer1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel LogTabsPanel;
-        private System.Windows.Forms.TabControl logTabControl;
+        private SplitContainer splitContainer1;
         private RichTextBox detailedMessage;
+        private TabControl logTabControl;
     }
 }
 
