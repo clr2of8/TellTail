@@ -19,7 +19,6 @@ namespace TellTail
 {
     public partial class TellTailForm : Form
     {
-        private List<TabPage> tabPages = new List<TabPage>();
         private List<DataGridView> dataGridViews = new List<DataGridView>();
 
         public TellTailForm()
@@ -30,19 +29,30 @@ namespace TellTail
             AddTab("Windows PowerShell");
             AddTab("PowerShellCore/Operational");
 
+            try
+            {
+                this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+
+            }
+            catch
+            {
+                this.Text = "TellTail v" + Application.ProductVersion;
+            }
+
         }
 
         private void AddTab(String LogName)
         {
             TabPage tabPage1 = new System.Windows.Forms.TabPage();
             DataGridView dataGridView1 = new System.Windows.Forms.DataGridView();
+            dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
 
             tabPage1.Controls.Add(dataGridView1);
-            tabPage1.Location =logTabControl.Location;
+           // tabPage1.Location =logTabControl.Location;
             tabPage1.Name = "tabPage4";
             tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            tabPage1.Size = logTabControl.Size;
+            //tabPage1.Size = logTabControl.Size;
             tabPage1.TabIndex = 0;
             tabPage1.Text = "-->" + LogName;
             tabPage1.UseVisualStyleBackColor = true;
@@ -57,7 +67,6 @@ namespace TellTail
             else {
                 tabPage1.BackColor = Color.White;
             }
-            tabPages.Add(tabPage1);
 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;

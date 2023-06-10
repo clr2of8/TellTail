@@ -41,31 +41,38 @@ namespace TellTail
             // 
             // LogTabsPanel
             // 
+            this.LogTabsPanel.AutoSize = true;
             this.LogTabsPanel.Controls.Add(this.detailedMessage);
             this.LogTabsPanel.Controls.Add(this.logTabControl);
-            this.LogTabsPanel.Location = new System.Drawing.Point(3, 5);
+            this.LogTabsPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.LogTabsPanel.Location = new System.Drawing.Point(0, 0);
+            this.LogTabsPanel.MinimumSize = new System.Drawing.Size(1902, 1031);
             this.LogTabsPanel.Name = "LogTabsPanel";
-            this.LogTabsPanel.Size = new System.Drawing.Size(2185, 1159);
+            this.LogTabsPanel.Size = new System.Drawing.Size(1902, 1033);
             this.LogTabsPanel.TabIndex = 0;
             // 
             // detailedMessage
             // 
+            this.detailedMessage.Dock = System.Windows.Forms.DockStyle.Right;
             this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.detailedMessage.Location = new System.Drawing.Point(1314, 7);
+            this.detailedMessage.Location = new System.Drawing.Point(1317, 0);
             this.detailedMessage.Name = "detailedMessage";
             this.detailedMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.detailedMessage.Size = new System.Drawing.Size(585, 1020);
+            this.detailedMessage.Size = new System.Drawing.Size(585, 1033);
             this.detailedMessage.TabIndex = 1;
             this.detailedMessage.Text = "";
             this.detailedMessage.WordWrap = false;
             // 
             // logTabControl
             // 
+            this.logTabControl.Dock = System.Windows.Forms.DockStyle.Left;
             this.logTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.logTabControl.Location = new System.Drawing.Point(3, 5);
+            this.logTabControl.Location = new System.Drawing.Point(0, 0);
+            this.logTabControl.MinimumSize = new System.Drawing.Size(1305, 1022);
             this.logTabControl.Name = "logTabControl";
             this.logTabControl.SelectedIndex = 0;
-            this.logTabControl.Size = new System.Drawing.Size(1305, 1022);
+            this.logTabControl.Size = new System.Drawing.Size(1305, 1033);
+            this.logTabControl.SizeMode = System.Windows.Forms.TabSizeMode.FillToRight;
             this.logTabControl.TabIndex = 0;
             // 
             // TellTailForm
@@ -76,19 +83,12 @@ namespace TellTail
             this.Controls.Add(this.LogTabsPanel);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MinimumSize = new System.Drawing.Size(1920, 1080);
             this.Name = "TellTailForm";
-            
-            try
-            {
-                this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
-
-            }
-            catch
-            {
-                this.Text = "TellTail v" + Application.ProductVersion;
-            }
+            this.Text = "TellTail";
             this.LogTabsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
