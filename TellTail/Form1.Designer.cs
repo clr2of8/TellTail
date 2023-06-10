@@ -1,4 +1,6 @@
-﻿using System.Windows.Forms;
+﻿using System.Reflection;
+using System;
+using System.Windows.Forms;
 
 namespace TellTail
 {
@@ -52,7 +54,7 @@ namespace TellTail
             this.detailedMessage.Location = new System.Drawing.Point(1314, 7);
             this.detailedMessage.Name = "detailedMessage";
             this.detailedMessage.ScrollBars = System.Windows.Forms.RichTextBoxScrollBars.ForcedBoth;
-            this.detailedMessage.Size = new System.Drawing.Size(868, 1150);
+            this.detailedMessage.Size = new System.Drawing.Size(585, 1020);
             this.detailedMessage.TabIndex = 1;
             this.detailedMessage.Text = "";
             this.detailedMessage.WordWrap = false;
@@ -63,19 +65,28 @@ namespace TellTail
             this.logTabControl.Location = new System.Drawing.Point(3, 5);
             this.logTabControl.Name = "logTabControl";
             this.logTabControl.SelectedIndex = 0;
-            this.logTabControl.Size = new System.Drawing.Size(1305, 1151);
+            this.logTabControl.Size = new System.Drawing.Size(1305, 1022);
             this.logTabControl.TabIndex = 0;
             // 
             // TellTailForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2194, 1173);
+            this.ClientSize = new System.Drawing.Size(1902, 1033);
             this.Controls.Add(this.LogTabsPanel);
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "TellTailForm";
-            this.Text = "TellTail";
+            
+            try
+            {
+                this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+
+            }
+            catch
+            {
+                this.Text = "TellTail v" + Application.ProductVersion;
+            }
             this.LogTabsPanel.ResumeLayout(false);
             this.ResumeLayout(false);
 
