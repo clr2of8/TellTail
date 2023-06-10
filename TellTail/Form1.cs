@@ -75,6 +75,7 @@ namespace TellTail
             dataGridView1.Columns.Add("EventID", "Event ID");
             dataGridView1.Columns.Add("EventLevel", "Level");
             dataGridView1.Columns.Add("EventDescription", "Description");
+            dataGridView1.Columns.Add("LogType", "Log Type");
 
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
@@ -87,6 +88,7 @@ namespace TellTail
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dataGridView1.Sort(dataGridView1.Columns[0],ListSortDirection.Descending);
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellMouseClick);
+            dataGridView1.DefaultCellStyle.BackColor = Color.Black;
 
             dataGridViews.Add(dataGridView1);
 
@@ -133,15 +135,59 @@ namespace TellTail
             var id = e.EventRecord.Id;
             var level = e.EventRecord.Level;
             var desc = e.EventRecord.FormatDescription();
+            string logType = "";
+
+            Console.ForegroundColor = ConsoleColor.White;
+            var scriptBlockLoggingEventId = 4104; var scriptBlockColor = Color.Yellow;
+            var moduleLoggingEventId = 4103; var moduleColor = Color.Cyan;
+            var scriptBlockExecutionStartEventId = 4105; var scriptBlockExecutionStartColor = Color.Green;
+            var scriptBlockExecutionStopEventId = 4106; var scriptBlockExecutionStopColor = Color.Red;
+            var theColor = Color.White;
+
+
+            // From PowerShell Cookbook: PowerShell automatically logs all script blocks (using a logging level of Warning) that contain keywords and techniques commonly used in malicious contexts.
+            if (id == scriptBlockLoggingEventId)
+            {
+                if (level == 5) // 1-Critical 2-Error 3-Warning 4-Info 5-verbose 0-LogAlways
+                {
+                    theColor = scriptBlockColor;
+                    logType = "Script Block Log";
+                }
+                else if (level == 3)
+                {
+                    theColor = Color.Orange;
+                    logType = "Automatic Script Block Log";
+                }
+            }
+            else if (id == moduleLoggingEventId)
+            {
+                theColor = moduleColor;
+                logType = "Module Log";
+            }
+            else if (id == scriptBlockExecutionStartEventId)
+            {
+                theColor = scriptBlockExecutionStartColor;
+                logType = "Script Execution Start Log";
+            }
+            else if (id == scriptBlockExecutionStopEventId)
+            {
+                theColor = scriptBlockExecutionStopColor;
+                logType = "Script Execution Stop Log";
+            }
+
+
             foreach (DataGridView dataGridView in dataGridViews)
             {
                 if (dataGridView.Tag.ToString() == e.EventRecord.LogName)
                 {
-                    //DataGridViewRow row = new DataGridViewRow(time, id, level, desc)
                     int index = dataGridView.RowCount - 1;
-                    if(dataGridView.SortOrder == SortOrder.Descending) { index = 0; }
-
-                    dataGridView.Invoke(new Action(() => dataGridView.Rows.Insert(index, new Object[] { time,id,level,desc})));
+                    if (dataGridView.SortOrder == SortOrder.Descending) { index = 0; }
+                    dataGridView.Invoke(new Action(() =>
+                     {
+                         dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
+                         dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
+                     }
+                    ));
                 }
             }
  
