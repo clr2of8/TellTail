@@ -49,9 +49,10 @@ namespace TellTail
             ((System.ComponentModel.ISupportInitialize)(dataGridView1)).BeginInit();
 
 
-            tabPage1.Padding = new System.Windows.Forms.Padding(3);
             tabPage1.TabIndex = 0;
-            tabPage1.Text = LogName;
+            tabPage1.Tag = LogName;
+            tabPage1.Text = " " + LogName + " ";
+        
             tabPage1.UseVisualStyleBackColor = true;
             if (LogName == "Microsoft-Windows-PowerShell/Operational")
             {
@@ -73,7 +74,7 @@ namespace TellTail
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            //dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             dataGridView1.TabIndex = 0;
             dataGridView1.Tag = LogName;
@@ -110,7 +111,10 @@ namespace TellTail
 
         private void dataGridView1_CellMouseClick(object sender, DataGridViewCellEventArgs e)
         {
-            detailedMessage.Text = ((System.Windows.Forms.DataGridView)sender).Rows[e.RowIndex].Cells[3].Value.ToString();
+            if (e.RowIndex != -1)
+            {
+                detailedMessage.Text = ((System.Windows.Forms.DataGridView)sender).Rows[e.RowIndex].Cells[3].Value.ToString();
+            }
         }
         public void LoadEventLogs(String log)
         {
@@ -145,7 +149,6 @@ namespace TellTail
             var desc = e.EventRecord.FormatDescription();
             string logType = "";
 
-            Console.ForegroundColor = ConsoleColor.White;
             var scriptBlockLoggingEventId = 4104; var scriptBlockColor = Color.Yellow;
             var moduleLoggingEventId = 4103; var moduleColor = Color.Cyan;
             var scriptBlockExecutionStartEventId = 4105; var scriptBlockExecutionStartColor = Color.Green;
@@ -182,6 +185,22 @@ namespace TellTail
                 theColor = scriptBlockExecutionStopColor;
                 logType = "Script Execution Stop Log";
             }
+            else if (id == 400)
+            {
+                theColor = Color.Green;
+                logType = "Engine State Log";
+            }
+            else if (id == 600)
+            {
+                theColor = Color.Cyan;
+                logType = "Provider Log";
+            }
+            else if (id == 800)
+            {
+                theColor = Color.Yellow;
+                logType = "Pipeline Execution Log";
+            }
+
 
 
             foreach (DataGridView dataGridView in dataGridViews)
@@ -194,6 +213,7 @@ namespace TellTail
                      {
                          dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
                          dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
+                         dataGridView.Refresh();
                      }
                     ));
                 }
@@ -204,17 +224,16 @@ namespace TellTail
         private void logTabControl_DrawItem(object sender, DrawItemEventArgs e)
         {
             TabPage page = logTabControl.TabPages[e.Index];
-            Brush col = Brushes.Gray;
-            if (page.Text == "Microsoft-Windows-PowerShell/Operational")
+            Brush col = Brushes.Magenta;
+            if ((string)page.Tag == "Microsoft-Windows-PowerShell/Operational")
             {
                 col = Brushes.Blue;
             }
-            else if (page.Text == "PowerShellCore/Operational")
+            else if ((string)page.Tag == "PowerShellCore/Operational")
             {
                 col = Brushes.Black;
-            }
-
-            e.Graphics.DrawString(page.Text, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
+            } 
+            e.Graphics.DrawString((string)page.Tag, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
         }
     }
 }

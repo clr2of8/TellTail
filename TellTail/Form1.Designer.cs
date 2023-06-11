@@ -46,7 +46,7 @@ namespace TellTail
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             // 
             // splitContainer1.Panel1
@@ -56,19 +56,18 @@ namespace TellTail
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.detailedMessage);
-            this.splitContainer1.Size = new System.Drawing.Size(1902, 1033);
-            this.splitContainer1.SplitterDistance = 1354;
-            this.splitContainer1.SplitterWidth = 7;
+            this.splitContainer1.Size = new System.Drawing.Size(1782, 853);
+            this.splitContainer1.SplitterDistance = 1268;
+            this.splitContainer1.SplitterWidth = 6;
             this.splitContainer1.TabIndex = 0;
             // 
             // detailedMessage
             // 
             this.detailedMessage.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.detailedMessage.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.detailedMessage.Location = new System.Drawing.Point(0, 0);
-            this.detailedMessage.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.detailedMessage.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.detailedMessage.Name = "detailedMessage";
-            this.detailedMessage.Size = new System.Drawing.Size(541, 1033);
+            this.detailedMessage.Size = new System.Drawing.Size(508, 853);
             this.detailedMessage.TabIndex = 0;
             this.detailedMessage.Text = "";
             this.detailedMessage.WordWrap = false;
@@ -77,25 +76,24 @@ namespace TellTail
             // 
             this.logTabControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.logTabControl.DrawMode = System.Windows.Forms.TabDrawMode.OwnerDrawFixed;
-            this.logTabControl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.logTabControl.Location = new System.Drawing.Point(0, 0);
-            this.logTabControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.logTabControl.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.logTabControl.Name = "logTabControl";
             this.logTabControl.SelectedIndex = 0;
-            this.logTabControl.Size = new System.Drawing.Size(1354, 1033);
+            this.logTabControl.Size = new System.Drawing.Size(1268, 853);
             this.logTabControl.TabIndex = 0;
             this.logTabControl.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.logTabControl_DrawItem);
             // 
             // TellTailForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(14F, 29F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1902, 1033);
+            this.ClientSize = new System.Drawing.Size(1782, 853);
             this.Controls.Add(this.splitContainer1);
-            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TellTailForm";
             this.Text = "TellTail";
             this.splitContainer1.Panel1.ResumeLayout(false);
