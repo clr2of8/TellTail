@@ -45,7 +45,7 @@ namespace TellTail
 
             tabPage1.TabIndex = 0;
             tabPage1.Tag = LogName;
-            tabPage1.Text = " " + LogName + " ";
+            tabPage1.Text = " " + LogName + "     ";
 
             tabPage1.UseVisualStyleBackColor = true;
             if (LogName == "Microsoft-Windows-PowerShell/Operational")
@@ -69,7 +69,6 @@ namespace TellTail
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.RowTemplate.Height = 24;
-            //dataGridView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             dataGridView1.TabIndex = 0;
             dataGridView1.Tag = LogName;
@@ -228,7 +227,15 @@ namespace TellTail
             {
                 col = Brushes.Black;
             }
-            e.Graphics.DrawString((string)page.Tag, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
+
+            if (e.Index == logTabControl.SelectedIndex)
+            {
+                e.Graphics.DrawString((string)page.Tag, new Font(logTabControl.Font, FontStyle.Bold), col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
+            }
+            else
+            {
+                e.Graphics.DrawString((string)page.Tag, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
+            }
         }
     }
 }
