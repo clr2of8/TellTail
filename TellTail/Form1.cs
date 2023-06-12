@@ -29,20 +29,10 @@ namespace TellTail
             AddTab("Windows PowerShell");
             AddTab("PowerShellCore/Operational");
 
-            try
-            {
-                // this.Text = "TellTail v" + ApplicationDeployment.CurrentDeployment.CurrentVersion;
-                string versionString = Environment.GetEnvironmentVariable("ClickOnce_CurrentVersion") ?? "0.0.0.0";
-                Version version = Version.Parse(versionString);
-                MessageBox.Show(version.ToString());
+            string versionString = Environment.GetEnvironmentVariable("ClickOnce_CurrentVersion") ?? Application.ProductVersion;
+            Version version = Version.Parse(versionString);
 
-            }
-            catch
-            {
-                this.Text = "TellTail v" + Application.ProductVersion;
-            }
-            this.Text = "TellTail v" + Application.ProductVersion;
-
+            this.Text = "TellTail v" + version;
         }
 
         private void AddTab(String LogName)
