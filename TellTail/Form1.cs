@@ -31,7 +31,10 @@ namespace TellTail
 
             try
             {
-                // this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                // this.Text = "TellTail v" + ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                string versionString = Environment.GetEnvironmentVariable("ClickOnce_CurrentVersion") ?? "0.0.0.0";
+                Version version = Version.Parse(versionString);
+                MessageBox.Show(version.ToString());
 
             }
             catch

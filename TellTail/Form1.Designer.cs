@@ -76,6 +76,7 @@
             detailedMessage.Size = new Size(508, 853);
             detailedMessage.TabIndex = 0;
             detailedMessage.Text = "";
+            detailedMessage.WordWrap = false;
             // 
             // TellTailForm
             // 
