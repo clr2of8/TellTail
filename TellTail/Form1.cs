@@ -38,6 +38,7 @@ namespace TellTail
             {
                 this.Text = "TellTail v" + Application.ProductVersion;
             }
+            this.Text = "TellTail v" + Application.ProductVersion;
 
         }
 
