@@ -6,6 +6,14 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
+    <PackageIcon>TellTail Icon on bricks.png</PackageIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <None Update="Images\TellTail Icon on bricks.png">
+      <Pack>True</Pack>
+      <PackagePath>\</PackagePath>
+    </None>
+  </ItemGroup>
 
 </Project>
