@@ -7,7 +7,12 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <PackageIcon>TellTail Icon on bricks.png</PackageIcon>
+    <ApplicationIcon>Images\TellTail Icon on bricks.ico</ApplicationIcon>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="Images\TellTail Icon on bricks.ico" />
+  </ItemGroup>
 
   <ItemGroup>
     <None Update="Images\TellTail Icon on bricks.png">
