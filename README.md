@@ -10,3 +10,5 @@ The application is currently hard-coded to tail these 3 PowerShell logs:
 3) PowerShellCore/Operational
 
 ## Installation
+
+Download and run `setup.exe` from the Releases directory to install the tool.
