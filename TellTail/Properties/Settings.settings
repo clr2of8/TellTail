@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="TellTail.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="myPS" Type="System.String" Scope="User">
-      <Value Profile="(Default)">Windows PowerShell</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>

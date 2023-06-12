@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -31,7 +31,7 @@ namespace TellTail
 
             try
             {
-                this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
+                // this.Text = "TellTail v" + System.Deployment.Application.ApplicationDeployment.CurrentDeployment.CurrentVersion;
 
             }
             catch
@@ -52,7 +52,7 @@ namespace TellTail
             tabPage1.TabIndex = 0;
             tabPage1.Tag = LogName;
             tabPage1.Text = " " + LogName + " ";
-        
+
             tabPage1.UseVisualStyleBackColor = true;
             if (LogName == "Microsoft-Windows-PowerShell/Operational")
             {
@@ -62,14 +62,15 @@ namespace TellTail
             {
                 tabPage1.BackColor = Color.Black;
             }
-            else {
+            else
+            {
                 tabPage1.BackColor = Color.White;
             }
             tabPage1.Controls.Add(dataGridView1);
 
             dataGridView1.AllowUserToOrderColumns = true;
             dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new System.Drawing.Point(tabPage1.Location.X+2, tabPage1.Location.Y);
+            dataGridView1.Location = new System.Drawing.Point(tabPage1.Location.X + 2, tabPage1.Location.Y);
             dataGridView1.Name = "dataGridView";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowHeadersWidth = 51;
@@ -95,7 +96,7 @@ namespace TellTail
             dataGridView1.Columns[2].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.Columns[3].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleLeft;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dataGridView1.Sort(dataGridView1.Columns[0],ListSortDirection.Descending);
+            dataGridView1.Sort(dataGridView1.Columns[0], ListSortDirection.Descending);
             dataGridView1.CellContentClick += new DataGridViewCellEventHandler(this.dataGridView1_CellMouseClick);
             dataGridView1.DefaultCellStyle.BackColor = Color.Black;
 
@@ -210,18 +211,18 @@ namespace TellTail
                     int index = dataGridView.RowCount - 1;
                     if (dataGridView.SortOrder == SortOrder.Descending) { index = 0; }
                     dataGridView.Invoke(new Action(() =>
-                     {
-                         dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
-                         dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
-                         dataGridView.Refresh();
-                     }
+                    {
+                        dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
+                        dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
+                        dataGridView.Refresh();
+                    }
                     ));
                 }
             }
- 
+
         }
 
-        private void logTabControl_DrawItem(object sender, DrawItemEventArgs e)
+        private void logTabControl_DrawItem_1(object sender, DrawItemEventArgs e)
         {
             TabPage page = logTabControl.TabPages[e.Index];
             Brush col = Brushes.Magenta;
@@ -232,7 +233,7 @@ namespace TellTail
             else if ((string)page.Tag == "PowerShellCore/Operational")
             {
                 col = Brushes.Black;
-            } 
+            }
             e.Graphics.DrawString((string)page.Tag, page.Font, col, new PointF(e.Bounds.X + 3, e.Bounds.Y + 3));
         }
     }
