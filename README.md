@@ -13,7 +13,7 @@ The application is currently hard-coded to tail these 3 PowerShell logs:
 
 ## Installation
 
-Download and run `setup.exe` from the [Releases](https://github.com/clr2of8/TellTail/releases) directory to install the tool.
+Download and run `setup.exe` from the [Releases](https://github.com/clr2of8/TellTail/tree/main/Releases) directory to install the tool.
 
 ## Customize and Build
 
