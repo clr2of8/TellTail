@@ -17,7 +17,7 @@ Download and run `setup.exe` from the Releases directory to install the tool.
 
 ## Customize and Build
 
-If you would like to modify the code compile it into an executable, you can use the following command from the Windows command prompt.
+If you would like to modify the code and then compile it into an executable, you can use the following command from the Windows command prompt.
 
 ```
 dotnet msbuild TellTail.csproj
