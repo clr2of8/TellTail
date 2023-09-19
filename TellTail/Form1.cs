@@ -20,11 +20,11 @@ namespace TellTail
     public partial class TellTailForm : Form
     {
         private List<DataGridView> dataGridViews = new List<DataGridView>();
-
-        public TellTailForm()
+        private string[] args;
+        public TellTailForm(string[] args)
         {
             InitializeComponent();
-
+            this.args = args;
             AddTab("Microsoft-Windows-PowerShell/Operational");
             AddTab("Windows PowerShell");
             AddTab("PowerShellCore/Operational");
@@ -205,9 +205,12 @@ namespace TellTail
                     if (dataGridView.SortOrder == SortOrder.Descending) { index = 0; }
                     dataGridView.Invoke(new Action(() =>
                     {
-                        dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
-                        dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
-                        dataGridView.Refresh();
+                        if (args.Length == 0 || !desc.Contains(args[0]))
+                        {
+                            dataGridView.Rows.Insert(index, new Object[] { time, id, level, desc, logType });
+                            dataGridView.Rows[index].DefaultCellStyle.ForeColor = theColor;
+                            dataGridView.Refresh();
+                        }
                     }
                     ));
                 }
